@@ -5,13 +5,13 @@ import './App.css';
 
 const snake = [{top: 0, left: 0}];
 
-const drawableSkake = { color: 'green', pixels: snake };
-
-const drawableObjects = [drawableSkake];
+const drawSnake = (pixels) => {
+    Chunk.draw([{ color: 'green', pixels }]);
+}
 
 class App extends Component {
   componentDidMount() {
-      Chunk.draw(drawableObjects);
+      drawSnake(snake);
   }
   render() {
     return (
