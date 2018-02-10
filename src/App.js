@@ -3,14 +3,25 @@ import Chunk from './lib/chunk';
 
 import './App.css';
 
-const snake = [{top: 0, left: 0}];
+const drawSnake = (snake) => {
+    Chunk.draw([{ color: 'green', pixels: snake }]);
+}
 
-const drawSnake = (pixels) => {
-    Chunk.draw([{ color: 'green', pixels }]);
+const moveSnake = (snake) => {
+    const oldSegment = snake[0];
+    const newSegment = {
+        top: oldSegment.top + 1,
+        left: oldSegment.left + 1,
+    };
+    return [newSegment];
 }
 
 class App extends Component {
   componentDidMount() {
+      let snake = [{ top: 0, left: 0 }];
+      snake = moveSnake(snake);
+      snake = moveSnake(snake);
+      snake = moveSnake(snake);
       drawSnake(snake);
   }
   render() {
